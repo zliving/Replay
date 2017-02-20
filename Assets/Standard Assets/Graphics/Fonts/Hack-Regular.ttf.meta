@@ -1,7 +1,7 @@
 fileFormatVersion: 2
-guid: d578be16b6ef4c7498a407c8cd7f83c7
-timeCreated: 1447161301
-licenseType: Pro
+guid: 7818d4dff0a21c84a9eb283c3d456704
+timeCreated: 1487478246
+licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
   fontSize: 16
@@ -9,11 +9,10 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Unipix
+  fontName: Hack
   fontNames:
-  - Unipix
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 1f16052dfd5f6f54e94e97ecedd4c86b, type: 3}
+  - Hack
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
