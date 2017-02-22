@@ -2,10 +2,10 @@
 
 using UnityEngine;
 using System.Collections;
-using Unity.EventSystems;
+using UnityEngine.EventSystems;
 
 public class SelectOnInput : MonoBehaviour {
-	public EventSystem evenSystem;
+	public EventSystem eventSystem;
 	public GameObject selectedObject;
 	private bool buttonSelected;
 
@@ -14,7 +14,7 @@ public class SelectOnInput : MonoBehaviour {
 
 	// Update is called once per frame.
 	void Update() {
-		if (Input.GetAxisRaw("Vertical") != 0 && buttonSelected == fase) {
+		if (Input.GetAxisRaw("Vertical") != 0 && buttonSelected == false) {
 			eventSystem.SetSelectedGameObject(selectedObject);
 			buttonSelected = true;
 		}
