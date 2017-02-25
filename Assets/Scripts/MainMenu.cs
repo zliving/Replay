@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour {
 	public bool isStart;
 	public bool isQuit;
 
-	void onMouseUp() {
+	void OnMouseUp() {
 		if (isStart) {
 			Application.LoadLevel(0);
 		}if (isQuit) {
