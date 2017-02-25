@@ -8,10 +8,10 @@ public class MainMenu : MonoBehaviour {
 
 	void onMouseUp() {
 		if (isStart) {
-			Application.LoadLevel(1);
-		}
-		if (isQuit) {
+			Application.LoadLevel(0);
+		}if (isQuit) {
 			Application.Quit();
+			GetComponent<Renderer>().material.color = Color.green;
 		}
 	}
 }
