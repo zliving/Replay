@@ -1,6 +1,4 @@
-﻿// tutorial credit goes to: http://blog.teamtreehouse.com/make-loading-screen-unity
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 

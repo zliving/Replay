@@ -1,6 +1,4 @@
-﻿// tutorial credit goes to : http://www.instructables.com/id/How-to-make-a-main-menu-in-Unity/
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
