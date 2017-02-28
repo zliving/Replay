@@ -15,13 +15,12 @@ public class SceneLoader : MonoBehaviour {
 		if (loadScene == false) {
 			// ...set the loadScene boolean to true to prevent loading a new scene more than once...
 			loadScene = true;
-			// ...change the instruction text to read "Loading..."
-			// TODO: chang flashing text to Replay
+			// ...change the instruction text to read "Loading"
 			loadingText.text = "Loading";
 			// ...and start a coroutine that will load the desired scene.
 			StartCoroutine(LoadNewScene());
 		} // If the new scene has started loading...
-		if (loadScene == true) {
+		else {
 			// ...then pulse the transparency of the loading text
 			// TODO: customize the animation to either the replay text pulsing or the circular arrow rotating.
 			loadingText.color = new Color(loadingText.color.r, loadingText.color.g, loadingText.color.b, 
@@ -34,7 +33,9 @@ public class SceneLoader : MonoBehaviour {
 		// This line waits for 3 seconds before executing the next line in the coroutine.
 		yield return new WaitForSeconds(3);
 		// Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
-		AsyncOperation async = Application.LoadLevelAsync(1);		//the integer represents the scene being loaded.
+		// The integer represents the scene being loaded.
+		// TODO: Once we assign the number 2 to the gameplay scene in the build settings, change 1 with 2.
+		AsyncOperation async = Application.LoadLevelAsync(1);		
 		// While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
 		while (!async.isDone) {
 			yield return null;
