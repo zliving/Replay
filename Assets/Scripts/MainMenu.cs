@@ -8,7 +8,7 @@ public class MainMenu : MonoBehaviour {
 
 	void OnMouseUp() {
 		if (isStart) {
-			Application.LoadLevel(0);
+			Application.LoadLevel(1);
 		}if (isQuit) {
 			// Application.Quit() only works when the game is launched as a desktop application...
 			Application.Quit();
