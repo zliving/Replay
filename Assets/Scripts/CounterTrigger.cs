@@ -8,12 +8,10 @@ public class CounterTrigger : MonoBehaviour, ITrigger {
 	private string objectTag = "PlayerTag";
 
 	private void OnEnable(){
-		Debug.Log("Enabled");
 		controller.setTriggerInterface(this);
 	}
 
 	public void OnTriggerEnter(Collider c){
-		Debug.Log("Entered");
 		controller.OnTriggerEnter (c);
 	}
 
@@ -24,7 +22,6 @@ public class CounterTrigger : MonoBehaviour, ITrigger {
 	public void Enter(Collider c, ref bool onTrigger){
 		Debug.Log (this.tag);
 		if (c.tag == objectTag) {
-			Debug.Log ("tag match");
 			onTrigger = true;
 			GameObject go = GameObject.FindGameObjectWithTag ("AITag");
 			AIRig rig = go.GetComponentInChildren<AIRig> ();
