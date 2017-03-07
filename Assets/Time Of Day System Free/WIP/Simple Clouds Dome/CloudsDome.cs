@@ -71,6 +71,7 @@ namespace AC.TimeOfDaySystemFree
 
 				// Folow player.
 				this.transform.position = player.position;
+				this.transform.Rotate(Vector3.up * Time.deltaTime, Space.World);
 
 				//this.transform.eulerAngles = new Vector3 (-90, TOD_Manager.WorldLongitude, 0);
 
