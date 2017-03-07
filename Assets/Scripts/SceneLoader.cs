@@ -1,6 +1,4 @@
-﻿// tutorial credit goes to: http://blog.teamtreehouse.com/make-loading-screen-unity
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
@@ -37,7 +35,7 @@ public class SceneLoader : MonoBehaviour {
 		// Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
 		// The integer represents the scene being loaded.
 		// TODO: Once we assign the number 2 to the gameplay scene in the build settings, change 1 with 2.
-		AsyncOperation async = Application.LoadLevelAsync(1);		
+		AsyncOperation async = Application.LoadLevelAsync(0);		
 		// While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
 		while (!async.isDone) {
 			yield return null;
