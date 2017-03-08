@@ -27,7 +27,7 @@ namespace AC.TimeOfDaySystemFree
 
 			if (timeText != null || m_TODManager != null) 
 			{
-				timeText.text = GetTimeString (); 
+				timeText.text = GetTimeString(); 
 			}
 		}
 			
