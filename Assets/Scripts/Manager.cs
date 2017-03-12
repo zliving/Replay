@@ -52,6 +52,10 @@ public class Manager : MonoBehaviour {
 
 	// restart() loads the Base Scene again.
 	public void restart() {
+		// Load base scene again.
 		Application.LoadLevel(2);
+		// Resume the game once the scene has been loaded again.
+		Time.timeScale = 1.0f;
+		isPaused = false;
 	}
 }
