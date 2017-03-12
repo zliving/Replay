@@ -19,36 +19,39 @@ public class Manager : MonoBehaviour {
 
 	void Update() {
 		timeText.text = "Time Since Startup: " + Time.timeSinceLevelLoad; //Tells us the time since the scene loaded
-		// If player presses escape and game is not paused...
-		if(Input.GetKeyDown(KeyCode.P) && !isPaused)
+		// If player presses "p" and game is not paused...
+		if (Input.GetKeyDown(KeyCode.P) && (isPaused == false)) {
 			// pause game.
 			pause();
-		// TODO: instead of using the escape key, change it to the "p" key
-		// If game is paused and player presses escape...
-		else if(Input.GetKeyDown(KeyCode.P) && isPaused)
+		}
+		// If game is paused and player presses "p"...
+		else if (Input.GetKeyDown(KeyCode.P) && (isPaused == true)) {
 			// ...unpause the game.
 			unPause();
+		}
 	}
 
-	// Pause pauses the game.
+	// pause() pauses the game.
 	public void pause() {
-		isPaused = true;
 		UIPanel.gameObject.SetActive(true); //turn on the pause menu
-		Time.timeScale = 0f; //pause the game
+		Time.timeScale = 0.0f; //pause the game
+		isPaused = true;
 	}
 
+	// unPause() unpauses the game.
 	public void unPause() {
-		isPaused = false;
 		UIPanel.gameObject.SetActive(false); //turn off pause menu
-		Time.timeScale = 1f; //resume game
+		Time.timeScale = 1.0f; //resume game
+		isPaused = false;
 	}
 
+	// quitGame() goes back to the main menu.
 	public void quitGame() {
-		Application.Quit(); // Only works for desktop application of the game.
+		Application.LoadLevel(0); 
 	}
 
-	// restart() goes back to the main menu.
+	// restart() loads the Base Scene again.
 	public void restart() {
-		Application.LoadLevel(0);
+		Application.LoadLevel(2);
 	}
 }
