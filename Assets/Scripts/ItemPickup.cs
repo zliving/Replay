@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour {
 
+    public GameObject CupDefault;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,6 +17,7 @@ public class ItemPickup : MonoBehaviour {
 	}
 
 	void OnMouseDown () {
-		gameObject.SetActive (false);
+        //gameObject.SetActive (false);
+        CupDefault.GetComponent<MeshRenderer>().enabled = false;
 	}
 }
