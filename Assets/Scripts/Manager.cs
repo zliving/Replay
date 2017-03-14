@@ -45,9 +45,9 @@ public class Manager : MonoBehaviour {
 		isPaused = false;
 	}
 
-	// quitGame() goes back to the main menu.
+	// quitGame() quits the game.
 	public void quitGame() {
-		Application.LoadLevel(0); 
+		Application.Quit();
 	}
 
 	// restart() loads the Base Scene again.
