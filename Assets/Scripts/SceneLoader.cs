@@ -34,8 +34,7 @@ public class SceneLoader : MonoBehaviour {
 		yield return new WaitForSeconds(3);
 		// Start an asynchronous operation to load the scene that was passed to the LoadNewScene coroutine.
 		// The integer represents the scene being loaded.
-		// TODO: Once we assign the number 2 to the gameplay scene in the build settings, change 1 with 2.
-		AsyncOperation async = Application.LoadLevelAsync(0);		
+		AsyncOperation async = Application.LoadLevelAsync(2);		
 		// While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
 		while (!async.isDone) {
 			yield return null;
