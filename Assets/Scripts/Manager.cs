@@ -10,7 +10,7 @@ public class Manager : MonoBehaviour {
 
 	[SerializeField]
 	Text timeText; //Will assign our Time Text to this variable so we can modify the text it displays.
-	bool isPaused; //Used to determine paused state
+	public bool isPaused; //Used to determine paused state
 
 	void Start() {
 		UIPanel.gameObject.SetActive(false); // Pause menu is disabled when scene starts
@@ -35,6 +35,9 @@ public class Manager : MonoBehaviour {
 	public void pause() {
 		UIPanel.gameObject.SetActive(true); //turn on the pause menu
 		Time.timeScale = 0.0f; //pause the game
+		// Free the cursor and make it visible.
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 		isPaused = true;
 	}
 
@@ -42,6 +45,9 @@ public class Manager : MonoBehaviour {
 	public void unPause() {
 		UIPanel.gameObject.SetActive(false); //turn off pause menu
 		Time.timeScale = 1.0f; //resume game
+		// Lock the cursor and hide it.
+		Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 		isPaused = false;
 	}
 
@@ -57,5 +63,9 @@ public class Manager : MonoBehaviour {
 		// Resume the game once the scene has been loaded again.
 		Time.timeScale = 1.0f;
 		isPaused = false;
+	}
+
+	public bool getIsPaused(){
+		return isPaused;
 	}
 }
