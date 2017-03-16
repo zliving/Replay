@@ -26,12 +26,12 @@ public class TestInventory : MonoBehaviour {
         }
     }
 
-    //removeItem is called from itemPutdown and passes the object being put down
-    /*public void removeItem(GameObject putdown) {
+    //removeItem is called from itemPutdown and passes the object being put back
+    public void removeItem(GameObject putback) {
         for(int i = 0; i < inventory.Count - 1; i++) {
-            if (inventory[i] == putdown) {
-                inventory.Remove(i);
+            if (inventory[i] == putback) {
+                inventory.Remove(inventory[i]);
             }
         }    
-    }*/
+    }
 }
