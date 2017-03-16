@@ -16,10 +16,14 @@ public class ItemPickup : MonoBehaviour {
 		
 	}
 
+    // OnMouseDown() is called when the mouse clicks on the GameObject collider
 	void OnMouseDown () {
-        this.GetComponent<MeshRenderer>().enabled = false;		//Disables renderer on click
-		this.GetComponent<Collider>().enabled = false;  //Disables collider on click
-        GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(itemParent);    //Send object data to the inventory
+        // Disable the renderer and collider
+        this.GetComponent<MeshRenderer>().enabled = false;
+		this.GetComponent<Collider>().enabled = false;
+
+        // Send the pickup object data to the inventory
+        GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(itemParent);
 
     }
 }

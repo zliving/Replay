@@ -21,6 +21,7 @@ public class ItemPutback : MonoBehaviour {
 
     // OnMouseOver() is called once per frame while the mouse is over the object
     void OnMouseOver () {
+        // Continue only if the item has already been picked up
         if (defaultChild.GetComponent<Collider>().enabled == false) {
             // Change Overlay text to show a message
             putbackText.GetComponent<Text>().enabled = true;
@@ -43,16 +44,4 @@ public class ItemPutback : MonoBehaviour {
         // Disable the putbackText from showing on the screen
         putbackText.GetComponent<Text>().enabled = false;   
     }
-
-    // OnMouseClick is called when the mouse clicks the GameObject
-    /*void OnMouseClick () {
-        if (defaultChild.GetComponent<Collider>().enabled == false) {
-            // Enable the renderer and collider
-            this.GetComponent<MeshRenderer>().enabled = true;
-            this.GetComponent<Collider>().enabled = true;
-
-            // Remove the item from the inventory
-            GameObject.Find("GlobalScripts").GetComponent<TestInventory>().removeItem(gameObject);
-        }
-    }*/
 }

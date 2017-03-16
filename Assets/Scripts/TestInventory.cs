@@ -16,20 +16,18 @@ public class TestInventory : MonoBehaviour {
 		
 	}
 
-    //addItem is called from itemPickup and passes the object being picked up
+    // addItem() is called from itemPickup and passes the object being picked up
     public void addItem(GameObject pickup) {
-        inventory.Add(pickup);  //Add the picked up item to the inventory
-
-        //for debug purposes show names of GameObjects in Inventory
-        foreach (var item in inventory) {
-            Debug.Log(item.name);
-        }
+        // Add the picked up item to the inventory
+        inventory.Add(pickup);  
     }
 
-    //removeItem is called from itemPutdown and passes the object being put back
+    // removeItem() is called from itemPutdown and passes the object being put back
     public void removeItem(GameObject putback) {
+        // Find the putback item in the inventory
         for(int i = 0; i < inventory.Count - 1; i++) {
             if (inventory[i] == putback) {
+                // Remove the item being put back
                 inventory.Remove(inventory[i]);
             }
         }    
