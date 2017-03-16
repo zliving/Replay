@@ -9,37 +9,27 @@ public class ItemPutback : MonoBehaviour {
     public GameObject defaultChild;
     public GameObject gameObject;
 
-	// Use this for initialization
-	void Start () {
-
-    }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    // OnMouseOver() is called once per frame while the mouse is over the object
+    // OnMouseOver() is called once per frame while the mouse is over the GameObject
     void OnMouseOver () {
-        // Continue only if the item has already been picked up
+        // Continue to the following code only if the item has already been picked up
         if (defaultChild.GetComponent<Collider>().enabled == false) {
-            // Change Overlay text to show a message
+            // Change the GUI overlay text to show a message for putting the item back
             putbackText.GetComponent<Text>().enabled = true;
             putbackText.GetComponent<Text>().text = "Put back the " + this.name;
 
-            // If the mouse clicks where the item belongs while it is not there
+            // If the mouse clicks where the item belongs, while it is not there, execute the following code
             if (Input.GetMouseButtonDown(0)) {
-                // Enable the renderer and collider
+                // Enable the renderer and collider on the GameObject default child
                 defaultChild.GetComponent<MeshRenderer>().enabled = true;
                 defaultChild.GetComponent<Collider>().enabled = true;
 
-                // Remove the item from the inventory
+                // Remove the putback item from the inventory
                 GameObject.Find("GlobalScripts").GetComponent<TestInventory>().removeItem(gameObject);
             }
         }
     }
 
-    // OnMouseExit() is called after following OnMouseOver()
+    // OnMouseExit() is called after exiting OnMouseOver()
     void OnMouseExit() {
         // Disable the putbackText from showing on the screen
         putbackText.GetComponent<Text>().enabled = false;   
