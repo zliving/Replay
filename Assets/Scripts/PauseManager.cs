@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI; //Need this for calling UI scripts
 
-public class Manager : MonoBehaviour {
+public class PauseManager : MonoBehaviour {
 	[SerializeField]
 	Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
 
@@ -19,13 +19,13 @@ public class Manager : MonoBehaviour {
 
 	void Update() {
 		timeText.text = "Time Since Startup: " + Time.timeSinceLevelLoad; //Tells us the time since the scene loaded
-		// If player presses "p" or escape and game is not paused...
-		if ((Input.GetKeyDown(KeyCode.P) || (Input.GetKeyDown(KeyCode.Escape)) && (isPaused == false))) {
+		// If player presses escape and game is not paused...
+		if ((Input.GetKeyDown(KeyCode.Escape) && (isPaused == false))) {
 			// pause game.
 			pause();
 		}
-		// If game is paused and player presses "p"...
-		else if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && (isPaused == true)) {
+		// If game is paused and player presses "esc"...
+		else if (Input.GetKeyDown(KeyCode.Escape) && (isPaused == true)) {
 			// ...unpause the game.
 			unPause();
 		}
