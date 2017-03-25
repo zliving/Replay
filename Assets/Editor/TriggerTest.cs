@@ -56,7 +56,7 @@ public class TriggerTest {
 		Collider c = go.GetComponent<BoxCollider> ();
 
 		// Change tag for trigger to recognize
-		go.tag = "NotThePlayerTag";
+		go.tag = "AITag";
 
 		// Make sure that controller is not null
 		counterTrigger.controller = new TriggerController();
