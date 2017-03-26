@@ -88,25 +88,4 @@ public class DayNightTest {
 
 		Assert.IsFalse (time.IsNight, "Is nighttime");
 	}
-		
-	[Test]
-	public void sunRotation_Noon_90() {
-		// Time of Day object
-		var TODObject = new GameObject();
-		TODObject.AddComponent<TimeOfDayManager> ();
-
-		// Get time manager
-		TimeOfDay time = TODObject.GetComponent<TimeOfDayManager> ();
-
-		// Assign day settings
-		time.dayInSeconds = 60.0f;
-
-		// Set the time to 1 a.m.
-		time.timeline = 1;
-
-		// Update time to determine night or day.
-		time.updateTime ();
-
-		Assert.IsFalse (time.IsDay, "Is daytime");
-	}
 }
