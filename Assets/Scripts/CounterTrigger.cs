@@ -20,7 +20,6 @@ public class CounterTrigger : MonoBehaviour, ITrigger {
 	}
 
 	public void Enter(Collider c, ref bool onTrigger){
-		Debug.Log (this.tag);
 		if (c.tag == objectTag) {
 			onTrigger = true;
 			GameObject go = GameObject.FindGameObjectWithTag ("AITag");
