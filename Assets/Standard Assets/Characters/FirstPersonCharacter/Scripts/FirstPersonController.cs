@@ -63,10 +63,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private void Update()
         {
 			// Enable camera rotation only when the game is not paused.
+			//TODO: here is where you'll have to check whether or not the Inventory is open
+			//and execute RotateView if it is not open.
 			if (Time.timeScale == 1){
 				RotateView ();
 			}
-				
+
+
+
             // the jump state needs to read here to make sure it is not missed
             if (!m_Jump)
             {
