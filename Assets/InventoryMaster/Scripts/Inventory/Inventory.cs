@@ -130,6 +130,16 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         updateItemIndex();
+		/*
+		if (inventoryOpen) {
+			// Free the cursor and make it visible.
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		} else {
+			// Lock the cursor and hide it.
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}*/
     }
 
 
@@ -157,6 +167,10 @@ public class Inventory : MonoBehaviour
         this.gameObject.SetActive(true);
         if (InventoryOpen != null)
             InventoryOpen();
+		// TODO: Trace which script will tell us if the inventory is open, and if so...
+		// Free the cursor and make it visible.
+		//Cursor.lockState = CursorLockMode.None;
+		//Cursor.visible = true;
     }
 
     public void checkIfAllInventoryClosed()

@@ -305,12 +305,14 @@ public class PlayerInventory : MonoBehaviour
             if (!inventory.activeSelf)
             {
                 mainInventory.openInventory();
+
             }
             else
             {
                 if (toolTip != null)
                     toolTip.deactivateTooltip();
                 mainInventory.closeInventory();
+
             }
         }
 
@@ -327,6 +329,16 @@ public class PlayerInventory : MonoBehaviour
                 craftSystemInventory.closeInventory();
             }
         }
+		/*
+		if (!inventory.activeSelf) {
+			// Lock the cursor and hide it.
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		} else {
+			// Free the cursor and make it visible.
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}*/
 
     }
 
