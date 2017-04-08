@@ -8,14 +8,14 @@ using RAIN.BehaviorTrees;
 public class AIScript : MonoBehaviour {
 	private GameObject player;
 	private AIRig rig;
-	[System.Serializable]
-	public class EventBooleans{
-		public string boolName;
-		public bool b;
-	}
+	// [System.Serializable]
+	// public class EventBooleans{
+	// 	public string boolName;
+	// 	public bool b;
+	// }
 
-	[SerializeField]
-	private List<EventBooleans> ;
+	// [SerializeField]
+	// private List<EventBooleans> ;
 
 	// Use this for initialization
 	void Start () {
