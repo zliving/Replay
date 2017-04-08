@@ -3,11 +3,13 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+//using System.Collections;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
+	//[RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
@@ -28,6 +30,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+
+		//GameObject _inventory;
+		//public bool showInventory = false;
+
+
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -42,6 +49,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
+		//GameObject inventory;
+		//CharacterController characterController;
 
         // Use this for initialization
         private void Start()
@@ -56,6 +65,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_Jumping = false;
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
+
+
+			//firstPersonCamera = Camera.main.GetComponent<Camera>();
+			/*characterController = GetComponent<CharacterController>();
+
+			if (GameObject.FindGameObjectWithTag("Player") != null)
+			{
+				PlayerInventory playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
+				if (playerInv.inventory != null)
+					inventory = playerInv.inventory;
+				if (playerInv.craftSystem != null)
+					craftSystem = playerInv.craftSystem;
+				if (playerInv.characterSystem != null)
+					characterSystem = playerInv.characterSystem;
+			}*/
         }
 
 
