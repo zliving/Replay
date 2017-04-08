@@ -57,4 +57,8 @@ public class AIScript : MonoBehaviour {
 	private bool getBoolean(string name){
 		return rig.AI.WorkingMemory.GetItem<bool> (name);
 	}
+
+	private bool isNotNull (string name) {
+		return rig.AI.WorkingMemory.GetItem<GameObject> (name) != null;
+	}
 }
