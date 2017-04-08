@@ -21,8 +21,6 @@ public class AIScript : MonoBehaviour {
 	void Start () {
 		
 		rig = GetComponentInChildren<AIRig> ();
-		rig.AI.WorkingMemory.SetItem<string> ("_route", "Waypoint Route");
-
 
 //		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 //		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
@@ -37,14 +35,14 @@ public class AIScript : MonoBehaviour {
 			foreach (string item in items) {
 				Debug.Log (item);
 			}
-			changeRoute ("OtherRoute");
+			changeRoute ("CafeRoute");
 		} else if(isFalse("triggered")){
-			changeRoute ("Waypoint Route");
+			changeRoute ("CounterRoute");
 		}
 	}
 
 	private void changeRoute (string route){
-		rig.AI.WorkingMemory.SetItem<string> ("_route", route);
+		rig.AI.WorkingMemory.SetItem<string> ("route", route);
 		rig.AI.Navigator.RestartPathfindingSearch ();
 	}
 
