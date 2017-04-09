@@ -21,6 +21,7 @@ public class CounterTrigger : MonoBehaviour, ITrigger {
 
 	public void Enter(Collider c, ref bool onTrigger){
 		if (c.tag == objectTag) {
+			Debug.Log("Entered with player");
 			onTrigger = true;
 			GameObject go = GameObject.FindGameObjectWithTag ("AITag");
 			AIRig rig = go.GetComponentInChildren<AIRig> ();
