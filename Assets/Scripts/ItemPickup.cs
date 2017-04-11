@@ -7,7 +7,7 @@ public class ItemPickup : MonoBehaviour {
     public GameObject itemParent;
 
     // OnMouseDown() is called when the mouse clicks on the GameObject collider
-	void OnMouseDown () {
+	public void OnMouseDown () {
         // Disable the renderer and collider on the GameObject default child
         this.GetComponent<MeshRenderer>().enabled = false;
 		this.GetComponent<Collider>().enabled = false;
