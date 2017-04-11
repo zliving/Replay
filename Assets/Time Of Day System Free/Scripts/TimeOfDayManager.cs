@@ -420,7 +420,7 @@ namespace AC.TimeOfDaySystemFree
 				Init();
 			}
 		}
-
+			
 
 		void Update()
 		{
@@ -667,6 +667,11 @@ namespace AC.TimeOfDaySystemFree
 			skyMaterial.SetFloat ("_StarsTwinkle", StarsTwinkle); 
 
 		}
+
+		public void updateTime(){
+			base.UpdateTime ();
+		}
 			
 	}
+		
 }
