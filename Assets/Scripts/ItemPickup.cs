@@ -10,8 +10,6 @@ public class ItemPickup : MonoBehaviour {
     // OnMouseDown() is called when the mouse clicks on the GameObject collider
     public void OnMouseOver () {
 
-        
-
         if (Input.GetKeyDown(KeyCode.E))
         {
             // Disable the renderer and collider on the GameObject default child
@@ -29,7 +27,10 @@ public class ItemPickup : MonoBehaviour {
     public void OnMouseDrag()
     {
         // Set hold the item at a given distance from the camera while draging the user drags the mouse
-        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
-        transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 mouseDrag = Input.mousePosition;
+        mouseDrag.z = distance;
+        mouseDrag = Camera.main.ScreenToWorldPoint(mouseDrag);
+
+        this.gameObject.GetComponent<Rigidbody>().MovePosition(mouseDrag);
     }
 }
