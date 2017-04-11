@@ -5,9 +5,12 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour {
 
     public GameObject itemParent;
+    float distance = 1.5f;
 
     // OnMouseDown() is called when the mouse clicks on the GameObject collider
-	public void OnMouseOver () {
+    public void OnMouseOver () {
+
+        
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -20,5 +23,13 @@ public class ItemPickup : MonoBehaviour {
         // Send the pickupitem object data to the inventory
         GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(itemParent);
 
+    }
+
+    // OnMouseDrag() is called when the mouse clicks on the GameObject collider and continues to hold the mouse down
+    public void OnMouseDrag()
+    {
+        // Set hold the item at a given distance from the camera while draging the user drags the mouse
+        Vector3 mousePosition = new Vector3(Input.mousePosition.x, Input.mousePosition.y, distance);
+        transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
     }
 }
