@@ -18,19 +18,16 @@ public class ItemPickup : MonoBehaviour {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             // No item is currently being dragged
-            if (!dragObj)
-            { 
+            if (!dragObj) { 
                 // Check for a RaycastHit on an item
-                if (Physics.Raycast(ray, out hit) && hit.rigidbody)
-                {
+                if (Physics.Raycast(ray, out hit) && hit.rigidbody) {
                     // Store the previous location of the item
                     dragObj = hit.transform;
                     // Store the distance between the item and the mouse
                     length = hit.distance;  
                 }
             }
-            else
-            {
+            else {
                 // Determine the velocity needed to move the item smoothly
                 var vel = (ray.GetPoint(length) - dragObj.position) * speed;
                 // Limit the velocity to prevent collisions
@@ -39,8 +36,7 @@ public class ItemPickup : MonoBehaviour {
                 dragObj.GetComponent<Rigidbody>().velocity = vel;
             }
         }
-        else
-        {
+        else {
             // Reset dragObj so a new item can be selected
             dragObj = null;  
         }
@@ -53,9 +49,8 @@ public class ItemPickup : MonoBehaviour {
             // Disable the renderer and collider on the GameObject default child
             this.GetComponent<MeshRenderer>().enabled = false;
             this.GetComponent<Collider>().enabled = false;
+            // Send the pickupitem object data to the inventory
+            GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(hit.collider.gameObject.name);
         }
-            
-        // Send the pickupitem object data to the inventory
-        //GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(/*dragObj*/);
     }
 }
