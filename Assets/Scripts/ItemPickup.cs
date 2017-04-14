@@ -40,17 +40,20 @@ public class ItemPickup : MonoBehaviour {
             // Reset dragObj so a new item can be selected
             dragObj = null;  
         }
-    }
 
-    // OnMouseOver() is called when the mouse hovers over the GameObject collider
-    public void OnMouseOver () {
-
+        // Check if the "E" key is being pressed
         if (Input.GetKeyDown(KeyCode.E)) {
-            // Disable the renderer and collider on the GameObject default child
-            this.GetComponent<MeshRenderer>().enabled = false;
-            this.GetComponent<Collider>().enabled = false;
-            // Send the pickupitem object data to the inventory
-            GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(hit.collider.gameObject.name);
+            // Cast a ray from the FPS camera to the item
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            // Check for a RaycastHit on an item
+            if (Physics.Raycast(ray, out hit) && hit.rigidbody) {
+                // Disable the renderer and collider on the GameObject default child
+                hit.collider.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                hit.collider.gameObject.GetComponent<Collider>().enabled = false;
+                // Send the pickupitem object data to the inventory
+                GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(hit.collider.gameObject.name);
+            }
         }
     }
 }
