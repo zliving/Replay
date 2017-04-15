@@ -3,6 +3,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI; //Need this for calling UI scripts
+using UnityEngine.SceneManagement;	// We need this for scene changing
 
 public class PauseManager : MonoBehaviour {
 	[SerializeField]
@@ -56,10 +57,19 @@ public class PauseManager : MonoBehaviour {
 		Application.Quit();
 	}
 
+	// exitGame() goes back to the main menu.
+	public void exitGame() {
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
+		// Go back to the main menu.
+		SceneManager.LoadScene (0);
+
+	}
+
 	// restart() loads the Base Scene again.
 	public void restart() {
 		// Load base scene again.
-		Application.LoadLevel(2);
+		SceneManager.LoadScene(2);
 		// Resume the game once the scene has been loaded again.
 		Time.timeScale = 1.0f;
 		isPaused = false;

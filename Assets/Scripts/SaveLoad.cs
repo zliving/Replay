@@ -5,17 +5,18 @@
 
 using UnityEngine;
 using System.Collections;
+using System;
 using System.Collections.Generic; 
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
-using AC.TimeOfDaySystemFree;
 
 // There is no need for Monobehavior, therefore it's ommitted.
-public static class SaveLoad {
+public class SaveLoad : MonoBehaviour {
+	public static SaveLoad saveLoad;
 	// The object, "savedGames" is the list of games that have been saved.
 	public static List<Game> savedGames = new List<Game>();
 
-	public static void Save() {
+	public void Save() {
 		// Append the current "Game" object to the list of saved games.
 		savedGames.Add(Game.current);
 		// Handles serialization work.
@@ -29,7 +30,7 @@ public static class SaveLoad {
 		file.Close();
 	}
 
-	public static void Load() {
+	public void Load() {
 		// Checks if the game to load exists.
 		if(File.Exists(Application.persistentDataPath + "/savedGames.gd")) {
 			// Handles serialization work.
