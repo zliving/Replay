@@ -10,7 +10,7 @@ public class ItemPutback : MonoBehaviour {
     public GameObject gameObject;
 
     // OnMouseOver() is called once per frame while the mouse is over the GameObject
-    void OnMouseOver () {
+    public void OnMouseOver () {
         // Continue to the following code only if the item has already been picked up
         if (defaultChild.GetComponent<Collider>().enabled == false) {
             // Change the GUI overlay text to show a message for putting the item back
@@ -30,7 +30,7 @@ public class ItemPutback : MonoBehaviour {
     }
 
     // OnMouseExit() is called after exiting OnMouseOver()
-    void OnMouseExit() {
+    public void OnMouseExit() {
         // Disable the putbackText from showing on the screen
         putbackText.GetComponent<Text>().enabled = false;   
     }

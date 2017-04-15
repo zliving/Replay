@@ -7,9 +7,13 @@ public class TestInventory : MonoBehaviour {
     List<GameObject> inventory = new List<GameObject>();
 
     // addItem() is called from itemPickup.cs and is passed the object being picked up
-    public void addItem(GameObject pickup) {
+    public void addItem(string pickup) {
+        // Find the game object passed to the function
+        GameObject pickupItem = GameObject.Find(pickup);
         // Add the picked up item to the inventory
-        inventory.Add(pickup);  
+        inventory.Add(pickupItem);
+
+        Debug.Log(inventory);
     }
 
     // removeItem() is called from itemPutback.cs and is passed the object being put back
