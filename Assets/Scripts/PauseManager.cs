@@ -60,8 +60,6 @@ public class PauseManager : MonoBehaviour {
 	// exitGame() goes back to the main menu.
 	public void exitGame() {
 		Time.timeScale = 1.0f; //resume game
-		//Cursor.lockState = CursorLockMode.None;
-		//Cursor.visible = true;
 
 		// Go back to the main menu.
 		SceneManager.LoadScene (0);
