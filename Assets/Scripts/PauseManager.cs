@@ -2,27 +2,27 @@
 
 using UnityEngine;
 using System.Collections;
-using UnityEngine.UI; //Need this for calling UI scripts
-using UnityEngine.SceneManagement;	// We need this for scene changing
+using UnityEngine.UI; 	// We need this for calling UI scripts.
+using UnityEngine.SceneManagement;		// We need this for scene changing.
 
 public class PauseManager : MonoBehaviour {
 	[SerializeField]
-	Transform UIPanel; //Will assign our panel to this variable so we can enable/disable it
+	Transform UIPanel;	 	//We will assign our panel to this variable so we can enable/disable it.
 
 	[SerializeField]
-	Text timeText; //Will assign our Time Text to this variable so we can modify the text it displays.
-	public bool isPaused; //Used to determine paused state
+	Text timeText; 			//Will assign our Time Text to this variable so we can modify the text it displays.
+	public bool isPaused; 		//Used to determine paused state
 
 	void Start() {
-		UIPanel.gameObject.SetActive(false); // Pause menu is disabled when scene starts
-		isPaused = false; // isPaused is always false when our scene opens
+		UIPanel.gameObject.SetActive(false); 	// Pause menu is disabled when scene starts.
+		isPaused = false; 		// isPaused is always false when our scene opens.
 	}
 
 	void Update() {
 		timeText.text = "Time Since Startup: " + Time.timeSinceLevelLoad; //Tells us the time since the scene loaded
 		// If player presses escape and game is not paused...
 		if ((Input.GetKeyDown(KeyCode.Escape) && (isPaused == false))) {
-			// pause game.
+			// ...pause game.
 			pause();
 		}
 		// If game is paused and player presses "esc"...

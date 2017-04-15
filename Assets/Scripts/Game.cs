@@ -1,8 +1,4 @@
-﻿/*
- * This script is intended for practice with Unity's save and load features
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using AC.TimeOfDaySystemFree;
 
@@ -12,8 +8,9 @@ public class Game {
 	public string time;
 
 	public Game () {
+		// Anything that we want to save will go in here.
+
 		//Get the time from DisplayTime.cs
 		//time = DisplayTime.GetTimeString();
 	}
-
 }

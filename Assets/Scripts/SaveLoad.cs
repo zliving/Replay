@@ -1,16 +1,10 @@
-﻿/* 
- * This file is a template for our actual save and load system. We'll replace what the data that is being saved with 
- * what's actually in our game.
- */
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic; 
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
 
-// There is no need for Monobehavior, therefore it's ommitted.
 public class SaveLoad : MonoBehaviour {
 	public static SaveLoad saveLoad;
 	// The object, "savedGames" is the list of games that have been saved.
@@ -35,19 +29,12 @@ public class SaveLoad : MonoBehaviour {
 		if(File.Exists(Application.persistentDataPath + "/savedGames.gd")) {
 			// Handles serialization work.
 			BinaryFormatter bf = new BinaryFormatter();
-			// Accces the filestream.
+			// Create a file stream as well as a "Game Data" file and open it.
 			FileStream file = File.Open(Application.persistentDataPath + "/savedGames.gd", FileMode.Open);
-			// "bf.Deserialize(file) finds our file at the location and deserializes it.
-			// (List<Game>)bf converts binary to type Game.
+			// Save the file by adding the non-binary version into the list of saved files.
 			SaveLoad.savedGames = (List<Game>)bf.Deserialize(file);
 			// Close the file.
 			file.Close();
 		}
 	}
 }
-
-/*
-[System.Serializable]
-class PlayerData {
-	public Inventory;
-}*/
