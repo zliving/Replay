@@ -59,11 +59,14 @@ public class PauseManager : MonoBehaviour {
 
 	// exitGame() goes back to the main menu.
 	public void exitGame() {
-		Cursor.lockState = CursorLockMode.None;
-		Cursor.visible = true;
+		Time.timeScale = 1.0f; //resume game
+		//Cursor.lockState = CursorLockMode.None;
+		//Cursor.visible = true;
+
 		// Go back to the main menu.
 		SceneManager.LoadScene (0);
-
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 	}
 
 	// restart() loads the Base Scene again.
