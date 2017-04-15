@@ -8,6 +8,7 @@ using System.Collections;
 using System.Collections.Generic; 
 using System.Runtime.Serialization.Formatters.Binary; 
 using System.IO;
+using AC.TimeOfDaySystemFree;
 
 // There is no need for Monobehavior, therefore it's ommitted.
 public static class SaveLoad {
@@ -19,8 +20,8 @@ public static class SaveLoad {
 		savedGames.Add(Game.current);
 		// Handles serialization work.
 		BinaryFormatter bf = new BinaryFormatter();
-		// Creates a filestream and a file object and passes it to the "saved games.gd location
-		// where savedGames is the name of the location and .gd is the file type of the file location.
+		// Creates a filestream and a file object and passes it to the "saved games.gd location where savedGames is the
+		// name of the location and .gd is the file type of the file location.
 		FileStream file = File.Create (Application.persistentDataPath + "/savedGames.gd");	
 		// Uses the Binary Formatter to create the file location as input.
 		bf.Serialize(file, SaveLoad.savedGames);
@@ -43,3 +44,9 @@ public static class SaveLoad {
 		}
 	}
 }
+
+/*
+[System.Serializable]
+class PlayerData {
+	public Inventory;
+}*/

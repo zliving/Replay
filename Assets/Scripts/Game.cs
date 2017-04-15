@@ -4,18 +4,16 @@
 
 using UnityEngine;
 using System.Collections;
+using AC.TimeOfDaySystemFree;
 
 [System.Serializable]		// Allows the data created by this script to be saved and loaded.
 public class Game { 
 	public static Game current;
-	public Character knight;
-	public Character rogue;
-	public Character wizard;
+	public string time;
 
 	public Game () {
-		knight = new Character();
-		rogue = new Character();
-		wizard = new Character();
+		//Get the time from DisplayTime.cs
+		//time = DisplayTime.GetTimeString();
 	}
 
 }
