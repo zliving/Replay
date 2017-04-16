@@ -45,14 +45,15 @@ public class AIScript : MonoBehaviour {
 
 	private void updateCupAvailable () {
 		GameObject cup = GameObject.FindGameObjectWithTag ("CoffeeCup");
-		if (cup != null) {
+
+		if (cup.GetComponent<MeshRenderer>().enabled) {
 			rig.AI.WorkingMemory.SetItem<bool> ("isCupAvailable", true);
 		} else {
 			rig.AI.WorkingMemory.SetItem<bool> ("isCupAvailable", false);
 		}
 	}
 
-	private void changeRoute (string route){
+	public void changeRoute (string route){
 		rig.AI.WorkingMemory.SetItem<string> ("route", route);
 		rig.AI.Navigator.RestartPathfindingSearch ();
 	}
