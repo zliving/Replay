@@ -30,14 +30,25 @@ public class AIScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		updateTriggered();
+		updateCupAvailable ();
+	}
+
+	private void updateTriggered(){
 		if (isTrue("triggered")) {
-			List<string> items = rig.AI.WorkingMemory.GetItems ();
-			foreach (string item in items) {
-				Debug.Log (item);
-			}
 			changeRoute ("CafeRoute");
 		} else if(isFalse("triggered")){
 			changeRoute ("CounterRoute");
+		}
+	}
+
+	private void updateCupAvailable () {
+		GameObject cup = GameObject.FindGameObjectWithTag ("CoffeeCup");
+		if (cup != null) {
+			rig.AI.WorkingMemory.SetItem<bool> ("isCupAvailable", true);
+		} else {
+			rig.AI.WorkingMemory.SetItem<bool> ("isCupAvailable", false);
 		}
 	}
 
