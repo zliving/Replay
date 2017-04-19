@@ -53,9 +53,9 @@ public class PauseManager : MonoBehaviour {
 	}
 
 	// quitGame() quits the game.
-	public void quitGame() {
-		Application.Quit();
-	}
+	//public void quitGame() {
+	//	Application.Quit();
+	//}
 
 	// exitGame() goes back to the main menu.
 	public void exitGame() {
