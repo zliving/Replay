@@ -10,6 +10,10 @@ public class ItemPickup : MonoBehaviour {
     private RaycastHit hit;
     private float length;
 
+    private ItemDataBaseList db;        // load ItemDatabase Resource into it
+    private Inventory inv;
+    public GameObject gameObject;
+
     // Update is called once per frame 
     void Update() {
         // Check if the mouse button is being pressed
@@ -43,16 +47,31 @@ public class ItemPickup : MonoBehaviour {
 
         // Check if the "E" key is being pressed
         if (Input.GetKeyDown(KeyCode.E)) {
+            if (db == null)
+            {
+                Debug.Log("Database is null");
+            }
             // Cast a ray from the FPS camera to the item
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
             // Check for a RaycastHit on an item
             if (Physics.Raycast(ray, out hit) && hit.rigidbody) {
-                // Disable the renderer and collider on the GameObject default child
-                hit.collider.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                hit.collider.gameObject.GetComponent<Collider>().enabled = false;
                 // Send the pickupitem object data to the inventory
-                GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(hit.collider.gameObject.name);
+                Item I = db.getItemByName(hit.collider.gameObject.name);
+                if (I != null)
+                {
+                    inv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>();
+                    Item copy = db.getItemByID(I.itemID);
+                    // Send the pickupitem object data to the inventory
+                    inv.addItemToInventory(copy.itemID);
+                    // Disable the renderer and collider on the GameObject default child
+                    hit.collider.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    hit.collider.gameObject.GetComponent<Collider>().enabled = false;
+                }
+                
+                
+                // Obsolete Test Code //GameObject.Find("GlobalScripts").GetComponent<TestInventory>().addItem(hit.collider.gameObject.name);
+                
             }
         }
     }
