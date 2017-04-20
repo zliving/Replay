@@ -12,7 +12,6 @@ public class ItemPickup : MonoBehaviour {
 
     private ItemDataBaseList db;        // load ItemDatabase Resource into it
     private Inventory inv;
-    public GameObject gameObject;
 
     // Update is called once per frame 
     void Update() {
@@ -47,10 +46,10 @@ public class ItemPickup : MonoBehaviour {
 
         // Check if the "E" key is being pressed
         if (Input.GetKeyDown(KeyCode.E)) {
-            if (db == null)
-            {
-                Debug.Log("Database is null");
+            if (db == null) {
+                db = (ItemDataBaseList)Resources.Load("ItemDatabase");
             }
+                
             // Cast a ray from the FPS camera to the item
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
