@@ -5,7 +5,7 @@ using UnityEditor;
 using AC.TimeOfDaySystemFree;
 using AC.CustomEditor;
 
-
+[System.Serializable]
 [CustomEditor(typeof(TimeOfDayManager))] 
 public class TimeOfDayManagerEditor : AC_CustomEditor
 {
