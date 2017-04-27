@@ -5,23 +5,15 @@ using RAIN.Action;
 using RAIN.Core;
 
 [RAINAction]
-public class AskCustomerForCup : RAINAction, IDialogue
+public class TakeCustomerCup : RAINAction
 {
-	GameObject barista;
-	Animator anim;
     public override void Start(RAIN.Core.AI ai)
     {
-		barista = GameObject.FindGameObjectWithTag ("AITag");
-		anim = barista.GetComponent<Animator> ();
-		base.Start(ai);
+        base.Start(ai);
     }
-
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
-		anim.SetInteger ("state", 1);
-		// Ask the customer for a cup.
-		dialogue();
         return ActionResult.SUCCESS;
     }
 
@@ -29,8 +21,4 @@ public class AskCustomerForCup : RAINAction, IDialogue
     {
         base.Stop(ai);
     }
-
-	public void dialogue(){
-	
-	}
 }
