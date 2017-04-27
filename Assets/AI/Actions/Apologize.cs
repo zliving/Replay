@@ -5,7 +5,7 @@ using RAIN.Action;
 using RAIN.Core;
 
 [RAINAction]
-public class Apologize : RAINAction
+public class Apologize : RAINAction, IDialogue
 {
 	AIRig customerRig;
     public override void Start(RAIN.Core.AI ai)
