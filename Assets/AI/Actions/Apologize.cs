@@ -7,13 +7,17 @@ using RAIN.Core;
 [RAINAction]
 public class Apologize : RAINAction
 {
+	AIRig customerRig;
     public override void Start(RAIN.Core.AI ai)
     {
+		customerRig = GameObject.FindGameObjectWithTag ("CustomerTag").GetComponent<AIRig> ();
         base.Start(ai);
     }
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
+		dialogue ();
+		customerRig.AI.WorkingMemory.SetItem<bool> ("cupTrigger", true);
         return ActionResult.SUCCESS;
     }
 
@@ -21,4 +25,8 @@ public class Apologize : RAINAction
     {
         base.Stop(ai);
     }
+
+	public void dialogue(){
+	
+	}
 }
