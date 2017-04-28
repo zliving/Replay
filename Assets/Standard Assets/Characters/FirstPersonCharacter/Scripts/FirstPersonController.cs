@@ -3,13 +3,13 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
-//using System.Collections;
+using System.Collections;
+
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (CharacterController))]
     [RequireComponent(typeof (AudioSource))]
-	//[RequireComponent(typeof(CharacterController))]
     public class FirstPersonController : MonoBehaviour
     {
         [SerializeField] private bool m_IsWalking;
@@ -49,7 +49,9 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
 
-		//GameObject inventory;
+		GameObject _inventory;
+		public bool showInventory = false;
+		GameObject inventory;
 		//CharacterController characterController;
 
         // Use this for initialization
@@ -68,28 +70,24 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
 
 			//firstPersonCamera = Camera.main.GetComponent<Camera>();
-			/*characterController = GetComponent<CharacterController>();
+			/*characterController = GetComponent<CharacterController>();*/
 
 			if (GameObject.FindGameObjectWithTag("Player") != null)
 			{
 				PlayerInventory playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>();
 				if (playerInv.inventory != null)
 					inventory = playerInv.inventory;
-				if (playerInv.craftSystem != null)
-					craftSystem = playerInv.craftSystem;
-				if (playerInv.characterSystem != null)
-					characterSystem = playerInv.characterSystem;
-			}*/
+			}
         }
 
 
         // Update is called once per frame
         private void Update()
         {
+
+
 			// Enable camera rotation only when the game is not paused.
-			//TODO: here is where you'll have to check whether or not the Inventory is open
-			//and execute RotateView if it is not open.
-			if (Time.timeScale == 1){
+			if (Time.timeScale == 1 && !lockMovement()){
 				RotateView ();
 			}
 
@@ -115,6 +113,14 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
         }
+
+		bool lockMovement()
+		{
+			if (inventory != null && inventory.activeSelf)
+				return true;
+			else
+				return false;
+		}
 
 
         private void PlayLandingSound()
