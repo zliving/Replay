@@ -47,6 +47,7 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+		// 
 		if (inventory != null && inventory.activeSelf && Cursor.visible == false) {
 			Cursor.lockState = CursorLockMode.None;
 			Cursor.visible = true;

@@ -91,6 +91,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				RotateView ();
 			}
 
+			if (lockMovement ()) {
+				// Free the cursor and make it visible.
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+			}
+			else if (Time.timeScale == 1 && !lockMovement()){
+				// Lock the cursor and hide it.
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = false;
+			}
+
 
 
             // the jump state needs to read here to make sure it is not missed
