@@ -46,6 +46,7 @@ public class PlayerInventory : MonoBehaviour
 
         Inventory.ItemEquip += EquipWeapon;
         Inventory.UnEquipItem += UnEquipWeapon;
+
     }
 
     public void OnDisable()
@@ -291,12 +292,19 @@ public class PlayerInventory : MonoBehaviour
             if (!characterSystem.activeSelf)
             {
                 characterSystemInventory.openInventory();
+				// Free the cursor and make it visible.
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+
             }
             else
             {
                 if (toolTip != null)
                     toolTip.deactivateTooltip();
                 characterSystemInventory.closeInventory();
+				// Lock the cursor and hide it.
+				Cursor.lockState = CursorLockMode.Locked;
+				Cursor.visible = false;
             }
         }
 
@@ -305,6 +313,8 @@ public class PlayerInventory : MonoBehaviour
             if (!inventory.activeSelf)
             {
                 mainInventory.openInventory();
+				//Cursor.lockState = CursorLockMode.None;
+				//Cursor.visible = true;
 
             }
             else

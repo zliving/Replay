@@ -47,9 +47,13 @@ public class FirstPersonController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (!lockMovement())
-        {
+		// 
+		if (inventory != null && inventory.activeSelf && Cursor.visible == false) {
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}
+			
+        if (!lockMovement()) {
             //Rotation
             float rotationLeftRight = Input.GetAxis("Mouse X") * mouseSensitivity;
             transform.Rotate(0, rotationLeftRight, 0);
@@ -64,8 +68,7 @@ public class FirstPersonController : MonoBehaviour
 
             verticalVelocity += Physics.gravity.y * Time.deltaTime;
 
-            if (Input.GetButtonDown("Jump") && characterController.isGrounded)
-            {
+            if (Input.GetButtonDown("Jump") && characterController.isGrounded){
                 verticalVelocity = jumpSpeed;
             }
 
@@ -79,13 +82,8 @@ public class FirstPersonController : MonoBehaviour
     }
 
 
-    bool lockMovement()
-    {
+    bool lockMovement(){
         if (inventory != null && inventory.activeSelf)
-            return true;
-        else if (characterSystem != null && characterSystem.activeSelf)
-            return true;
-        else if (craftSystem != null && craftSystem.activeSelf)
             return true;
         else
             return false;
