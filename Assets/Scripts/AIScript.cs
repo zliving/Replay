@@ -8,6 +8,7 @@ using RAIN.BehaviorTrees;
 public class AIScript : MonoBehaviour {
 	private GameObject player;
 	private AIRig rig;
+	private float time;
 	// [System.Serializable]
 	// public class EventBooleans{
 	// 	public string boolName;
@@ -19,9 +20,9 @@ public class AIScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 		rig = GetComponentInChildren<AIRig> ();
-
+		rig.AI.WorkingMemory.SetItem<float>("timeline", 6.0f);
+		rig.AI.WorkingMemory.SetItem<bool> ("isClosingTime", false);
 //		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 //		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
 //		rig.AI.WorkingMemory.SetItem<WaypointSet> ("_route", mainRoute);
@@ -30,9 +31,9 @@ public class AIScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 		updateTriggered();
 		updateCupAvailable ();
+		updateClosingTime ();
 	}
 
 	private void updateTriggered(){
@@ -40,6 +41,12 @@ public class AIScript : MonoBehaviour {
 			changeRoute ("CafeRoute");
 		} else if(isFalse("triggered")){
 			changeRoute ("CounterRoute");
+		}
+	}
+
+	private void updateClosingTime(){
+		if (rig.AI.WorkingMemory.GetItem<float>("timeline") >= 23.0f) {
+			rig.AI.WorkingMemory.SetItem<bool> ("isClosingTime", true);
 		}
 	}
 
