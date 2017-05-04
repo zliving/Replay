@@ -16,6 +16,7 @@ public class Customer : MonoBehaviour {
 		rig = GetComponentInChildren<AIRig> ();
 		anim = GetComponent<Animator> ();
 		anim.SetInteger ("state", 1);
+		rig.AI.WorkingMemory.SetItem<bool> ("converseWithPlayer", false);
 		//		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 		//		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
 		//		rig.AI.WorkingMemory.SetItem<WaypointSet> ("_route", mainRoute);
