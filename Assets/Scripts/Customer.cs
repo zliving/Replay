@@ -17,6 +17,7 @@ public class Customer : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		anim.SetInteger ("state", 1);
 		rig.AI.WorkingMemory.SetItem<bool> ("converseWithPlayer", false);
+		rig.AI.WorkingMemory.SetItem<bool> ("missingScriptBook", false);
 		//		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 		//		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
 		//		rig.AI.WorkingMemory.SetItem<WaypointSet> ("_route", mainRoute);
