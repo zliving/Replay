@@ -18,6 +18,7 @@ public class Customer : MonoBehaviour {
 		anim.SetInteger ("state", 1);
 		rig.AI.WorkingMemory.SetItem<bool> ("converseWithPlayer", false);
 		rig.AI.WorkingMemory.SetItem<bool> ("missingScriptBook", false);
+		rig.AI.WorkingMemory.SetItem<bool> ("missingAllBooks", false);
 		//		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 		//		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
 		//		rig.AI.WorkingMemory.SetItem<WaypointSet> ("_route", mainRoute);
@@ -26,31 +27,8 @@ public class Customer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
+		// Add updateforBools
 	}
-
-//	private void updateTriggered(){
-//		if (isTrue("triggered")) {
-//			changeRoute ("CafeRoute");
-//		} else if(isFalse("triggered")){
-//			changeRoute ("CounterRoute");
-//		}
-//	}
-//
-//	private void updateCupAvailable () {
-//		GameObject cup = GameObject.FindGameObjectWithTag ("CoffeeCup");
-//
-//		if (cup.GetComponent<MeshRenderer>().enabled) {
-//			rig.AI.WorkingMemory.SetItem<bool> ("isCupAvailable", true);
-//		} else {
-//			rig.AI.WorkingMemory.SetItem<bool> ("isCupAvailable", false);
-//		}
-//	}
-//
-//	public void changeRoute (string route){
-//		rig.AI.WorkingMemory.SetItem<string> ("route", route);
-//		rig.AI.Navigator.RestartPathfindingSearch ();
-//	}
 
 	private bool isTrue (string memoryVariableName){
 		return rig.AI.WorkingMemory.GetItem<bool> (memoryVariableName);

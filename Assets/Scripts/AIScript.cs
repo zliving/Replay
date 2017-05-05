@@ -23,6 +23,7 @@ public class AIScript : MonoBehaviour {
 		rig = GetComponentInChildren<AIRig> ();
 		rig.AI.WorkingMemory.SetItem<float>("timeline", 6.0f);
 		rig.AI.WorkingMemory.SetItem<bool> ("isClosingTime", false);
+		rig.AI.WorkingMemory.SetItem<bool> ("converseWithPlayer", false);
 //		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 //		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
 //		rig.AI.WorkingMemory.SetItem<WaypointSet> ("_route", mainRoute);
