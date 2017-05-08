@@ -169,8 +169,8 @@ public class Inventory : MonoBehaviour
             InventoryOpen();
 		// TODO: Trace which script will tell us if the inventory is open, and if so...
 		// Free the cursor and make it visible.
-		//Cursor.lockState = CursorLockMode.None;
-		//Cursor.visible = true;
+		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
     }
 
     public void checkIfAllInventoryClosed()

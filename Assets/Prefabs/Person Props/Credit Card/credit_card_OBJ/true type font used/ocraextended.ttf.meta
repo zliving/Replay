@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: eb8ee1aa9b6e248c781ad764d8a7a044
+timeCreated: 1492735053
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: OCR A Extended
+  fontNames:
+  - OCR A Extended
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 51a12557ac9d6419fa39b22aeefca2ee, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

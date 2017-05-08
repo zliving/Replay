@@ -5,16 +5,8 @@ using UnityEngine.UI;
 
 public class GameQuit : MonoBehaviour {
 
-	public void Update() {
-		if (Input.GetKeyDown (KeyCode.Escape)) {
-			Application.Quit();
-		}
-	}
-
-	public void QuitOnClick(bool isClicked) {
-		// Application.Quit() only works when the game is launched as a desktop application...
+	// quitGame() quits the game.
+	public void quitGame() {
 		Application.Quit();
-		// Unlike in the previous GUI I can't change the color on a button.
 	}
-		
 }
