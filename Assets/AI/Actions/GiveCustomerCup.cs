@@ -5,7 +5,7 @@ using RAIN.Action;
 using RAIN.Core;
 
 [RAINAction]
-public class GiveCustomerCup : RAINAction, IDialogue
+public class GiveCustomerCup : RAINAction
 {
     public override void Start(RAIN.Core.AI ai)
     {

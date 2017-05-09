@@ -5,12 +5,12 @@ using RAIN.Action;
 using RAIN.Core;
 
 [RAINAction]
-public class Apologize : RAINAction, IDialogue
+public class Apologize : RAINAction
 {
 	AIRig customerRig;
     public override void Start(RAIN.Core.AI ai)
     {
-		customerRig = GameObject.FindGameObjectWithTag ("CustomerTag").GetComponent<AIRig> ();
+		customerRig = GameObject.FindGameObjectWithTag ("Customer").GetComponent<AIRig> ();
         base.Start(ai);
     }
 

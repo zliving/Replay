@@ -5,22 +5,22 @@ using RAIN.Action;
 using RAIN.Core;
 
 [RAINAction]
-public class OrderCoffee : RAINAction, IDialogue
+public class OrderCoffee : RAINAction
 {
-	AudioSource source;
-	AudioClip clip;
+	Dialogue audio;
+	AIRig barista;
     public override void Start(RAIN.Core.AI ai)
     {
         base.Start(ai);
-		source = ai.Body.GetComponent<AudioSource> ();
-		clip = (AudioClip)Resources.Load ("Replay_Audio_1-2");
-		source.clip = clip;
+		audio = new Dialogue(ai, "Replay_Audio_1-2");
+		barista = GameObject.FindGameObjectWithTag ("AITag").GetComponentInChildren<AIRig> ();
     }
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
 		// Add Audio for ordering a coffee.
-		dialogue();
+		audio.play();
+		barista.AI.WorkingMemory.SetItem<bool> ("customerOrdered", true);
         return ActionResult.SUCCESS;
     }
 
@@ -28,8 +28,4 @@ public class OrderCoffee : RAINAction, IDialogue
     {
         base.Stop(ai);
     }
-
-	public void dialogue(){
-		source.Play ();
-	}
 }
