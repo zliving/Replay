@@ -9,6 +9,7 @@ public class AIScript : MonoBehaviour {
 	private GameObject player;
 	private AIRig rig;
 	private float time;
+
 	// [System.Serializable]
 	// public class EventBooleans{
 	// 	public string boolName;
@@ -25,6 +26,7 @@ public class AIScript : MonoBehaviour {
 		rig.AI.WorkingMemory.SetItem<bool> ("isClosingTime", false);
 		rig.AI.WorkingMemory.SetItem<bool> ("converseWithPlayer", false);
 		rig.AI.WorkingMemory.SetItem<bool> ("customerOrdered", false);
+		rig.AI.WorkingMemory.SetItem<bool> ("timeUp", false);
 //		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 //		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
 //		rig.AI.WorkingMemory.SetItem<WaypointSet> ("_route", mainRoute);
@@ -36,6 +38,7 @@ public class AIScript : MonoBehaviour {
 		updateTriggered();
 		updateCupAvailable ();
 		updateClosingTime ();
+		updateCustomerOrdered ();
 	}
 
 	private void updateTriggered(){
@@ -44,6 +47,20 @@ public class AIScript : MonoBehaviour {
 		} else if(isFalse("triggered")){
 			changeRoute ("CounterRoute");
 		}
+	}
+
+	private void updateCustomerOrdered(){
+		if (rig.AI.WorkingMemory.GetItem<bool> ("customerOrdered")) {
+			if (timeUp (3.0f)) {
+				rig.AI.WorkingMemory.SetItem<bool> ("timeUp", true);
+			} else {
+				time += Time.deltaTime;
+			}
+		}
+	}
+
+	private bool timeUp(float delay){
+		return time >= delay; 
 	}
 
 	private void updateClosingTime(){

@@ -12,14 +12,6 @@ public class Dialogue : MonoBehaviour
 		clip = (AudioClip)Resources.Load (path);
 		source.clip = clip;
 	}
-
-	public void wait(float seconds){
-		StartCoroutine (waitEnum (seconds));
-	}
-
-	private IEnumerator waitEnum(float seconds){
-		yield return new WaitForSeconds (seconds);
-	}
 		
 	public void play(){
 		source.Play ();
