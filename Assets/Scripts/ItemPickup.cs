@@ -57,8 +57,7 @@ public class ItemPickup : MonoBehaviour {
             if (Physics.Raycast(ray, out hit) && hit.rigidbody) {
                 // Send the pickupitem object data to the inventory
                 Item I = db.getItemByName(hit.collider.gameObject.name);
-                if (I != null)
-                {
+                if (I != null) {
                     inv = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>();
                     Item copy = db.getItemByID(I.itemID);
                     // Send the pickupitem object data to the inventory
