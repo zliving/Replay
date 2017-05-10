@@ -61,10 +61,16 @@ public class AIScript : MonoBehaviour {
 		}
 	}
 
+	private IEnumerator wait(float seconds){
+		yield return new WaitForSeconds (seconds);
+	}
+
 	private void updateCustomerOrdered(){
 		if (rig.AI.WorkingMemory.GetItem<bool> ("customerOrdered")) {
 			if (timeUp (customerOrderDelay)) {
-				rig.AI.WorkingMemory.SetItem<bool> ("timeUp", true);
+				setBoolean ("timeUp", true);
+				rig.AI.WorkingMemory.SetItem<string> ("route", "CustomerTarget");
+				rig.AI.Navigator.RestartPathfindingSearch ();
 			} else {
 				time += Time.deltaTime;
 			}
