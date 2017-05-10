@@ -21,6 +21,7 @@ public class OrderCoffee : RAINAction
 		// Add Audio for ordering a coffee.
 		audio.play();
 		barista.AI.WorkingMemory.SetItem<bool> ("customerOrdered", true);
+		barista.GetComponent<AIScript> ().setBoolean ("makeCoffee", true);
         return ActionResult.SUCCESS;
     }
 

@@ -9,7 +9,8 @@ public class AIScript : MonoBehaviour {
 	private GameObject player;
 	private AIRig rig;
 	private float time;
-
+	private float customerOrderDelay = 2.0f;
+	private float coffeeDelay = 3.0f;
 	// [System.Serializable]
 	// public class EventBooleans{
 	// 	public string boolName;
@@ -26,6 +27,7 @@ public class AIScript : MonoBehaviour {
 		rig.AI.WorkingMemory.SetItem<bool> ("isClosingTime", false);
 		rig.AI.WorkingMemory.SetItem<bool> ("converseWithPlayer", false);
 		rig.AI.WorkingMemory.SetItem<bool> ("customerOrdered", false);
+		rig.AI.WorkingMemory.SetItem<bool> ("makeCoffee", false);
 		rig.AI.WorkingMemory.SetItem<bool> ("timeUp", false);
 //		mainRoute = NavigationManager.Instance.GetWaypointSet ("Waypoint Route");
 //		otherRoute = NavigationManager.Instance.GetWaypointSet ("OtherRoute");
@@ -49,9 +51,19 @@ public class AIScript : MonoBehaviour {
 		}
 	}
 
+	private void updateCoffeeMade(){
+		if (rig.AI.WorkingMemory.GetItem<bool> ("makeCoffee")) {
+			if (timeUp (coffeeDelay)) {
+				rig.AI.WorkingMemory.SetItem<bool> ("timeUp", true);
+			} else {
+				time += Time.deltaTime;
+			}
+		}
+	}
+
 	private void updateCustomerOrdered(){
 		if (rig.AI.WorkingMemory.GetItem<bool> ("customerOrdered")) {
-			if (timeUp (3.0f)) {
+			if (timeUp (customerOrderDelay)) {
 				rig.AI.WorkingMemory.SetItem<bool> ("timeUp", true);
 			} else {
 				time += Time.deltaTime;
@@ -92,11 +104,13 @@ public class AIScript : MonoBehaviour {
 		return !rig.AI.WorkingMemory.GetItem<bool> (memoryVariableName);
 	}
 
-	private bool getBoolean(string name){
+	public bool getBoolean(string name){
 		return rig.AI.WorkingMemory.GetItem<bool> (name);
 	}
 
-	private bool isNotNull (string name) {
-		return rig.AI.WorkingMemory.GetItem<GameObject> (name) != null;
+	public void setBoolean(string name, bool b){
+		rig.AI.WorkingMemory.SetItem<bool> (name, b);
 	}
+
+
 }
