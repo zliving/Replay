@@ -3,7 +3,7 @@ using System.Collections;
 using RAIN.Core;
 using UnityEngine;
 
-public class Dialogue : MonoBehaviour
+public class Dialogue
 {
 	protected AudioSource source;
 	protected AudioClip clip;
