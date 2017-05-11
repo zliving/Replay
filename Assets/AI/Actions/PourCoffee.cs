@@ -20,8 +20,7 @@ public class PourCoffee : RAINAction
 
     public override ActionResult Execute(RAIN.Core.AI ai)
     {
-		anim.SetInteger ("state", 1);
-		// Take the cup here.
+		script.setBoolean ("makeCoffee", true);
 		return ActionResult.SUCCESS;
     }
 
