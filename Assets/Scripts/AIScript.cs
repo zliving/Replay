@@ -69,9 +69,9 @@ public class AIScript : MonoBehaviour {
 
 	private void updateCustomerOrdered(){
 		if (rig.AI.WorkingMemory.GetItem<bool> ("customerOrdered")) {
+			Debug.Log ("update Customer ordered");
 			if (timeUp (customerOrderDelay)) {
 				setBoolean ("timeUp", true);
-				//rig.AI.WorkingMemory.SetItem<string> ("route", "HowCanIHelpTrig");
 				//rig.AI.Navigator.RestartPathfindingSearch ();
 			} else {
 				time += Time.deltaTime;
