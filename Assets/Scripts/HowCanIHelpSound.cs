@@ -9,7 +9,6 @@ public class PlaySound : MonoBehaviour {
 	private bool alreadyPlayed = false;
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Play sound started");
 		source = GetComponent<AudioSource> ();
 		clip = source.clip;
 		volume = source.volume;

@@ -8,6 +8,7 @@ using RAIN.BehaviorTrees;
 public class AIScript : MonoBehaviour {
 	private GameObject player;
 	private AIRig rig;
+	private Animator anim;
 	private float time;
 	private float customerOrderDelay = 2.0f;
 	private float coffeeDelay = 3.0f;
@@ -22,6 +23,7 @@ public class AIScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		anim = this.GetComponent<Animator> ();
 		rig = GetComponentInChildren<AIRig> ();
 		rig.AI.WorkingMemory.SetItem<float>("timeline", 6.0f);
 		rig.AI.WorkingMemory.SetItem<bool> ("isClosingTime", false);
@@ -69,8 +71,8 @@ public class AIScript : MonoBehaviour {
 		if (rig.AI.WorkingMemory.GetItem<bool> ("customerOrdered")) {
 			if (timeUp (customerOrderDelay)) {
 				setBoolean ("timeUp", true);
-				rig.AI.WorkingMemory.SetItem<string> ("route", "CustomerTarget");
-				rig.AI.Navigator.RestartPathfindingSearch ();
+				//rig.AI.WorkingMemory.SetItem<string> ("route", "HowCanIHelpTrig");
+				//rig.AI.Navigator.RestartPathfindingSearch ();
 			} else {
 				time += Time.deltaTime;
 			}
