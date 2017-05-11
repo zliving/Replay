@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using RAIN.Core;
 
 namespace AC.TimeOfDaySystemFree
 {
 	[ExecuteInEditMode]
 	public class TimeOfDayManager : TimeOfDay
 	{
-
+		// AI to update time for
+		private AIRig rig;
 
 		#region Resources.
 
@@ -434,7 +435,7 @@ namespace AC.TimeOfDaySystemFree
 				timeline = Mathf.Clamp (timeline, 0 - .0001f, k_DayDuration + .0001f);
 			}
 			#endif
-
+			rig.AI.WorkingMemory.SetItem<float> ("timeline", timeline);
 			UpdateTime ();
 
 			Atmosphere ();
@@ -461,6 +462,9 @@ namespace AC.TimeOfDaySystemFree
 		protected override void Init()
 		{
 			base.Init ();
+
+			// Get rig from AI
+			rig = GameObject.FindGameObjectWithTag ("AITag").GetComponentInChildren<AIRig>();
 
 			// Set sky material.
 			if (m_AutoAssignSky)
@@ -670,6 +674,7 @@ namespace AC.TimeOfDaySystemFree
 
 		public void updateTime(){
 			base.UpdateTime ();
+
 		}
 			
 	}

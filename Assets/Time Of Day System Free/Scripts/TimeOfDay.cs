@@ -478,7 +478,7 @@ namespace AC.TimeOfDaySystemFree
 			//---------------------------------------------------------------------------------
 
 			// Day state.
-			IsDay = (timeline <= 5.49f || timeline >= 18.49f) ? false : true;
+			IsDay = (timeline <= 5.49f || timeline >= 17.49f) ? false : true;
 			IsNight = !IsDay; 
 
 			// Get world rotation.
